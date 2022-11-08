@@ -4,10 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Add Api Versioning Services
 builder.Services.AddApiVersioning(options => {
-    options.AssumeDefaultVersionWhenUnspecified = true;
-    options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.ReportApiVersions = true;
+    options.AssumeDefaultVersionWhenUnspecified = true; //If no verion is set
+    options.DefaultApiVersion = new ApiVersion(1, 0);   //Default to Zero
+    options.ReportApiVersions = true; //Show versions of endpoint in header response.
 });
 
 var app = builder.Build();
