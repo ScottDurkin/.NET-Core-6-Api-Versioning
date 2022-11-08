@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.Services.AddApiVersioning(options => {
     options.AssumeDefaultVersionWhenUnspecified = true; //If no verion is set
     options.DefaultApiVersion = new ApiVersion(1, 0);   //Default to Zero
     options.ReportApiVersions = true; //Show versions of endpoint in header response.
+});
+
+builder.Services.AddMvc().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.WriteIndented = true;
 });
 
 var app = builder.Build();
